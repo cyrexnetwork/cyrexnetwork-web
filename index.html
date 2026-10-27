@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d1a">
+  <meta name="description" content="cyreXnetwork accompagne les entreprises dans la gestion de leur infrastructure informatique et la protection de leurs systèmes.">
+  <title>cyreXnetwork — Infrastructure & cybersécurité</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #080d1a;
+      --panel: #10182a;
+      --text: #f4f7ff;
+      --muted: #a7b2ca;
+      --cyan: #21e6f3;
+      --blue: #477bff;
+      --violet: #a35bff;
+      --line: rgba(175, 198, 255, .14);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 75% 20%, rgba(64, 91, 255, .12), transparent 36rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(8, 13, 26, .82);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 1.3rem;
+      font-weight: 750;
+      letter-spacing: -.06em;
+    }
+
+    .brand span { color: var(--cyan); }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      color: var(--cyan);
+      filter: drop-shadow(0 0 9px rgba(33, 230, 243, .45));
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .nav-links a:hover { color: var(--cyan); }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 21px;
+      border-radius: 8px;
+      font-weight: 700;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(33, 230, 243, .18);
+    }
+
+    .button-primary {
+      color: #061017;
+      background: linear-gradient(100deg, var(--cyan), #68a6ff);
+    }
+
+    .button-outline {
+      border: 1px solid rgba(33, 230, 243, .45);
+      color: var(--text);
+    }
+
+    .hero {
+      min-height: 620px;
+      padding: 94px 0 86px;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      align-items: center;
+      gap: 55px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--cyan);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: var(--cyan);
+    }
+
+    h1 {
+      max-width: 700px;
+      margin: 20px 0;
+      font-size: clamp(2.8rem, 6vw, 5.3rem);
+      line-height: 1.02;
+      letter-spacing: -.065em;
+    }
+
+    h1 span {
+      color: transparent;
+      background: linear-gradient(100deg, var(--cyan), #7595ff 60%, var(--violet));
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+
+    .hero-copy {
+      max-width: 570px;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 30px;
+    }
+
+    .visual {
+      position: relative;
+      min-height: 390px;
+      display: grid;
+      place-items: center;
+    }
+
+    .orbit {
+      position: absolute;
+      width: min(360px, 80vw);
+      aspect-ratio: 1;
+      border: 1px solid rgba(87, 150, 255, .2);
+      border-radius: 50%;
+      box-shadow: 0 0 70px rgba(70, 107, 255, .12), inset 0 0 70px rgba(70, 107, 255, .08);
+    }
+
+    .orbit::before, .orbit::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(33, 230, 243, .22);
+      border-radius: 50%;
+    }
+
+    .orbit::before { inset: 25px; }
+    .orbit::after { inset: 55px; }
+
+    .core {
+      position: relative;
+      z-index: 1;
+      width: 190px;
+      height: 190px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(33, 230, 243, .45);
+      border-radius: 38px;
+      background: linear-gradient(145deg, rgba(25, 43, 73, .96), rgba(15, 21, 43, .96));
+      box-shadow: 0 0 65px rgba(33, 230, 243, .16), 0 0 120px rgba(126, 74, 255, .12);
+      transform: rotate(45deg);
+    }
+
+    .core-inner {
+      color: var(--cyan);
+      font-size: 4.7rem;
+      font-weight: 900;
+      letter-spacing: -.12em;
+      text-shadow: 0 0 24px rgba(33, 230, 243, .5);
+      transform: rotate(-45deg);
+    }
+
+    .status {
+      position: absolute;
+      right: 0;
+      bottom: 32px;
+      padding: 12px 16px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(16, 24, 42, .9);
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .status strong { color: var(--cyan); }
+
+    .section {
+      padding: 86px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin-bottom: 34px;
+    }
+
+    h2 {
+      margin: 12px 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.12;
+      letter-spacing: -.045em;
+    }
+
+    .section-heading p, .card p, .cta p {
+      color: var(--muted);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      padding: 27px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: linear-gradient(145deg, rgba(16, 24, 42, .92), rgba(11, 17, 31, .85));
+    }
+
+    .card:hover { border-color: rgba(33, 230, 243, .42); }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 21px;
+      border: 1px solid rgba(33, 230, 243, .25);
+      border-radius: 12px;
+      background: rgba(33, 230, 243, .08);
+      color: var(--cyan);
+      font-size: 1.35rem;
+    }
+
+    .card h3 { margin: 0 0 9px; font-size: 1.15rem; }
+    .card p { margin: 0; font-size: .95rem; }
+
+    .cta {
+      margin: 10px 0 86px;
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      border: 1px solid rgba(33, 230, 243, .25);
+      border-radius: 18px;
+      background:
+        radial-gradient(ellipse at 80% 50%, rgba(99, 76, 255, .22), transparent 45%),
+        linear-gradient(120deg, #101a2c, #10142a);
+    }
+
+    .cta h2 { margin: 0; font-size: clamp(1.8rem, 4vw, 2.5rem); }
+    .cta p { margin-bottom: 0; }
+
+    footer {
+      padding: 25px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    @media (max-width: 780px) {
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding-top: 70px; gap: 20px; }
+      .visual { min-height: 320px; }
+      .cards { grid-template-columns: 1fr; }
+      .cta { padding: 32px 25px; align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (max-width: 480px) {
+      .container { width: min(100% - 28px, 1120px); }
+      .brand { font-size: 1.1rem; }
+      .hero-actions .button { width: 100%; }
+      .status { right: 0; bottom: 5px; }
+      .footer-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="#" aria-label="cyreXnetwork, accueil">
+        <svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <path d="M20 3 34 8v11c0 9-5.7 14.7-14 18C11.7 33.7 6 28 6 19V8l14-5Z"
+                stroke="currentColor" stroke-width="2"/>
+          <path d="m13 14 14 13M27 14 13 27" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="13" cy="14" r="2" fill="currentColor"/>
+          <circle cx="27" cy="14" r="2" fill="currentColor"/>
+          <circle cx="13" cy="27" r="2" fill="currentColor"/>
+          <circle cx="27" cy="27" r="2" fill="currentColor"/>
+        </svg>
+        <div>cyre<span>X</span>network</div>
+      </a>
+
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="#services">Services</a>
+        <a href="#approche">Notre approche</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="button button-outline" href="#contact">Parlons de votre projet</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="container hero">
+      <div>
+        <div class="eyebrow">Infrastructure · Sécurité · Performance</div>
+        <h1>Votre informatique.<br><span>Sécurisée et maîtrisée.</span></h1>
+        <p class="hero-copy">
+          cyreXnetwork accompagne les entreprises dans la gestion de leur
+          infrastructure informatique et la protection de leurs systèmes.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#contact">Découvrir nos services</a>
+          <a class="button button-outline" href="#approche">Notre approche</a>
+        </div>
+      </div>
+
+      <div class="visual" aria-hidden="true">
+        <div class="orbit"></div>
+        <div class="core"><div class="core-inner">X</div></div>
+        <div class="status"><strong>●</strong> Infrastructure protégée</div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Nos expertises</div>
+          <h2>Une technologie fiable.<br>Une sécurité renforcée.</h2>
+          <p>Des solutions adaptées pour garder votre entreprise connectée, protégée et prête à évoluer.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="icon" aria-hidden="true">⌘</div>
+            <h3>Gestion d’infrastructure</h3>
+            <p>Administration et optimisation de vos environnements informatiques, réseaux et serveurs.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon" aria-hidden="true">⬡</div>
+            <h3>Cybersécurité</h3>
+            <p>Renforcement de vos défenses pour mieux protéger vos systèmes, vos accès et vos données.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon" aria-hidden="true">↗</div>
+            <h3>Conseil & accompagnement</h3>
+            <p>Un accompagnement clair pour faire évoluer votre environnement et vos pratiques numériques.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="approche">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Notre approche</div>
+          <h2>La technologie au service de votre activité.</h2>
+          <p>
+            Nous privilégions une approche concrète : comprendre vos besoins,
+            identifier les priorités et mettre en place des solutions adaptées
+            à votre réalité.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container cta" id="contact">
+      <div>
+        <h2>Prêt à renforcer votre infrastructure&nbsp;?</h2>
+        <p>Échangeons sur vos besoins en informatique et en cybersécurité.</p>
+      </div>
+      <a class="button button-primary" href="mailto:info@cyreXnetwork.com">
+        Nous contacter
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 cyreXnetwork. Tous droits réservés.</span>
+      <span>Infrastructure informatique · Cybersécurité</span>
+    </div>
+  </footer>
+</body>
+</html>
